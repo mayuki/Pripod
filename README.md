@@ -1,7 +1,26 @@
 # Pripod
 Pripod enables you to easily access Pod information from the .NET Core app within a Pod.
 
+Access information related to pods such as Deployment and ReplicaSet using the Kubernetes API.
+
+# Features
+- No configuration
+- Minimal API surface (`Pod.Current.`)
+  - **Pod**: Name, Namespace, HostIP, PodIP, Labels, Annotations, NodeName
+    - **Deployment,ReplicaSet,DaemonSet,StatefulSet,Job,CronJob**: Name, Namespace, Labels, Annotations
+- Lightweight
+  - No dependencies. No need to install `KubernetesClient`, `Json.NET`, etc...
+
 # Usage
+## Install
+```
+PM> Install-Package Pripod
+```
+```
+$ dotnet add package Pripod
+```
+
+## Code sample and outputs
 ```csharp
 using Pripod;
 
@@ -33,7 +52,7 @@ Deployment: default/consoleapp1
 - Kubernetes 1.10 or later
 
 # FYI
-If you only need pod information, you can also use the Kubernetes Downward API. You do not need this library for that. 
+If you only need pod information, you can also use the Kubernetes Downward API. **You do not need this library for that.**
 - [Expose Pod Information to Containers Through Files](https://kubernetes.io/docs/tasks/inject-data-application/downward-api-volume-expose-pod-information/)
 - [Expose Pod Information to Containers Through Environment Variables](https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/)
 
