@@ -1,0 +1,11 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jobtest
+spec:
+  template:
+    spec:
+      containers:
+      - name: jobtest
+        image: pripodsampleapp:debug
+      restartPolicy: Never

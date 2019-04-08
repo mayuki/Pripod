@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonsettest
+spec:
+  selector:
+    matchLabels:
+      app: daemonsettest
+  template:
+    metadata:
+      labels:
+        app: daemonsettest
+    spec:
+      containers:
+      - name: daemonsettest
+        image: pripodsampleapp:debug

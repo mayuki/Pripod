@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pripod", "src\Pripod\Pripod.csproj", "{7FAB27D7-CDFA-4A31-961F-68851A25A357}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{5721377D-0AF3-4AEF-841A-D72FD32FC4D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pripod.SampleApp", "samples\Pripod.SampleApp\Pripod.SampleApp.csproj", "{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FAB27D7-CDFA-4A31-961F-68851A25A357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FAB27D7-CDFA-4A31-961F-68851A25A357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FAB27D7-CDFA-4A31-961F-68851A25A357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FAB27D7-CDFA-4A31-961F-68851A25A357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA} = {5721377D-0AF3-4AEF-841A-D72FD32FC4D1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A1A1085-276C-40D8-97E3-27DBDE26B48D}
+	EndGlobalSection
+EndGlobal

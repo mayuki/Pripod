@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <Authors>Mayuki Sawatari</Authors>
+    <Copyright>Copyright 2019-present Mayuki Sawatari</Copyright>
+    <PackageProjectUrl>https://github.com/mayuki/Pripod</PackageProjectUrl>
+    <PackageTags>Kubernetes Pod</PackageTags>
+    <PackageLicenseExpression>MIT License</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/mayuki/Pripod</RepositoryUrl>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+</Project>

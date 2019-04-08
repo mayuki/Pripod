@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: statefulsettest
+spec:
+  selector:
+    matchLabels:
+      app: statefulsettest
+  serviceName: "statefulsettest"
+  template:
+    metadata:
+      labels:
+        app: statefulsettest
+    spec:
+      containers:
+      - name: statefulsettest
+        image: pripodsampleapp:debug
