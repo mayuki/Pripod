@@ -8,7 +8,8 @@
     <PackageTags>Kubernetes Pod</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/mayuki/Pripod</RepositoryUrl>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
+    <Description>Pripod enables you to easily access Pod information from the .NET Core app within a Pod.</Description>
   </PropertyGroup>
 
 </Project>
