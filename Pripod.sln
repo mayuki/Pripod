@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pripod", "src\Pripod\Pripod
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{5721377D-0AF3-4AEF-841A-D72FD32FC4D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pripod.SampleApp", "samples\Pripod.SampleApp\Pripod.SampleApp.csproj", "{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pripod.SampleApp", "samples\Pripod.SampleApp\Pripod.SampleApp.csproj", "{CDB2EB65-5E21-445D-8019-3A0FA35DE8FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitVersioning", "GitVersioning", "{5FDAAA80-8680-4485-B98E-84ACD4692C0C}"
+	ProjectSection(SolutionItems) = preProject
+		version.json = version.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
