@@ -1,4 +1,6 @@
 # Pripod
+[![NuGet package](https://img.shields.io/nuget/v/Pripod.svg)](https://nuget.org/packages/Pripod)
+
 Pripod enables you to easily access Pod information from the .NET Core app within a Pod.
 
 Access information related to pods such as Deployment and ReplicaSet using the Kubernetes API.
@@ -12,13 +14,6 @@ Access information related to pods such as Deployment and ReplicaSet using the K
   - No dependencies. No need to install `KubernetesClient`, `Json.NET`, etc...
 
 # Usage
-## Install
-```
-PM> Install-Package Pripod
-```
-```
-$ dotnet add package Pripod
-```
 
 ## Code sample and outputs
 ```csharp
@@ -47,8 +42,16 @@ PodIP: 10.1.0.14
 Deployment: default/consoleapp1
 ```
 
+## Install
+```
+PM> Install-Package Pripod
+```
+```
+$ dotnet add package Pripod
+```
+
 # Requirements
-- .NET Core 2.2 or later
+- .NET Standard 2.0 or later
 - Kubernetes 1.10 or later
 
 # FYI
