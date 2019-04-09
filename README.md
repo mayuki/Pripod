@@ -1,12 +1,13 @@
 # Pripod
 [![NuGet package](https://img.shields.io/nuget/v/Pripod.svg)](https://nuget.org/packages/Pripod)
 
-Pripod enables you to easily access Pod information from the .NET Core app within a Pod.
+Pripod enables you to easily access Pod information from the .NET Core app inside a Pod.
 
 Access information related to pods such as Deployment and ReplicaSet using the Kubernetes API.
 
 # Features
 - No configuration
+  - If the Kubernetes cluster enables RBAC enabled, you need to assign service account to a Pod.
 - Minimal API surface (`Pod.Current.`)
   - **Pod**: Name, Namespace, HostIP, PodIP, Labels, Annotations, NodeName
     - **Deployment,ReplicaSet,DaemonSet,StatefulSet,Job,CronJob**: Name, Namespace, Labels, Annotations
