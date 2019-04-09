@@ -18,7 +18,13 @@ Access information related to pods such as Deployment and ReplicaSet using the K
 ```csharp
 using Pripod;
 
+// Optional: Explicitly initialize to improve performance on first-time access.
+// Pod.Initialize();
+
+// Determines whether this process is running on the Kubernetes cluster.
 Console.WriteLine($"IsRunningOnKubernetes: {Pod.Current.IsRunningOnKubernetes}");
+
+// Show Pod information
 Console.WriteLine($"Pod: {Pod.Current.Namespace}/{Pod.Current.Name} @ {Pod.Current.NodeName}");
 Console.WriteLine("Labels:");
 foreach (var keyValue in Pod.Current.Labels)
@@ -27,6 +33,8 @@ foreach (var keyValue in Pod.Current.Labels)
 }
 Console.WriteLine($"HostIP: {Pod.Current.HostIP}");
 Console.WriteLine($"PodIP: {Pod.Current.PodIP}");
+
+// Show Deployment information
 Console.WriteLine($"Deployment: {Pod.Current.Deployment?.Namespace}/{Pod.Current.Deployment?.Name}");
 ```
 
