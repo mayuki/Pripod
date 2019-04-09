@@ -10,8 +10,7 @@ Access information related to pods such as Deployment and ReplicaSet using the K
 - Minimal API surface (`Pod.Current.`)
   - **Pod**: Name, Namespace, HostIP, PodIP, Labels, Annotations, NodeName
     - **Deployment,ReplicaSet,DaemonSet,StatefulSet,Job,CronJob**: Name, Namespace, Labels, Annotations
-- Lightweight
-  - No dependencies. No need to install `KubernetesClient`, `Json.NET`, etc...
+- No dependencies. No need to install `KubernetesClient`, `Json.NET`, etc...
 
 # Usage
 
