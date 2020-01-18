@@ -15,6 +15,12 @@ Access information related to pods such as Deployment and ReplicaSet using the K
 
 # Usage
 
+build docker image.
+
+```shell
+docker build -t pripodsampleapp:debug -f samples/Pripod.SampleApp/Dockerfile .
+```
+
 ## Code sample and outputs
 ```csharp
 using Pripod;

@@ -4,10 +4,10 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
-COPY ["Pripod.SampleApp/Pripod.SampleApp.csproj", "ConsoleApp1/"]
-RUN dotnet restore "Pripod.SampleApp/Pripod.SampleApp.csproj"
+COPY ["samples/Pripod.SampleApp/Pripod.SampleApp.csproj", "samples/Pripod.SampleApp/"]
+RUN dotnet restore "samples/Pripod.SampleApp/Pripod.SampleApp.csproj"
 COPY . .
-WORKDIR "/samples/Pripod.SampleApp"
+WORKDIR "/src/samples/Pripod.SampleApp"
 RUN dotnet build "Pripod.SampleApp.csproj" -c Release -o /app
 
 FROM build AS publish
