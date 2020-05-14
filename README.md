@@ -15,10 +15,95 @@ Access information related to pods such as Deployment and ReplicaSet using the K
 
 # Usage
 
-build docker image.
+Just docker is enough?
 
 ```shell
 docker build -t pripodsampleapp:debug -f samples/Pripod.SampleApp/Dockerfile .
+```
+
+Or try on kubernetes? To try pripod on your k8s, build docker image then deploy pod.
+
+build docker image and push it.
+
+```shell
+docker build -t YOUR_USERNAME:debug -f samples/Pripod.SampleApp/Dockerfile .
+```
+
+> ADDITONAL: if your cluster is remote, push image to docker hub or any registry.
+
+```shell
+docker push -t YOUR_USERNAME:debug
+```
+
+Create k8s manifest for pod and appropriate role.
+
+```yaml
+# pripod.yaml
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: pripod-role
+  annotations:
+    app.kubernetes.io/type: role
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions", "apps"]
+    resources: ["replicasets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions", "apps"]
+    resources: ["daemonsets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions", "apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["apps"]
+    resources: ["statefulsets"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pripod-rolebinding
+  annotations:
+    app.kubernetes.io/type: rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: pripod-role
+subjects:
+  - kind: ServiceAccount
+    name: pripod-serviceaccount
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pripod-serviceaccount
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pripod
+spec:
+  serviceAccountName: pripod-serviceaccount
+  containers:
+    - name: pripod
+      image: YOUR_USERNAME:debug
+      command: ["sleep", "86400"]
+```
+
+Deploy to your k8s cluster.
+
+```shell
+kubectl apply -f pripod.yaml
+```
+
+Now you can check your role is correct and pripod can read kubernetes meta.
+
+```shell
+kubectl exec -it pripod -- dotnet Pripod.SampleApp.dll
 ```
 
 ## Code sample and outputs
