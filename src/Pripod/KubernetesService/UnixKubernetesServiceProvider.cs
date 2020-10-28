@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 
 namespace Pripod.KubernetesService
@@ -6,10 +6,10 @@ namespace Pripod.KubernetesService
     public class UnixKubernetesServiceProvider : KubernetesServiceProviderBase
     {
         private bool? _isRunningOnKubernetes;
-        private string _namespace;
-        private string _hostName;
-        private string _accessToken;
-        private string _kubernetesServiceEndPoint;
+        private string? _namespace;
+        private string? _hostName;
+        private string? _accessToken;
+        private string? _kubernetesServiceEndPoint;
 
         public override bool IsRunningOnKubernetes
             => _isRunningOnKubernetes ?? (bool)(_isRunningOnKubernetes = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("KUBERNETES_SERVICE_HOST")));

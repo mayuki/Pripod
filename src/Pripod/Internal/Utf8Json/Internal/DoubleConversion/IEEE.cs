@@ -1,4 +1,5 @@
-﻿using System;
+#nullable disable
+using System;
 using System.Runtime.InteropServices;
 
 namespace Pripod.Internal.Utf8Json.Internal.DoubleConversion

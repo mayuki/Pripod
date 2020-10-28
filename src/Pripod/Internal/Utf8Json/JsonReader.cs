@@ -1,4 +1,5 @@
-﻿using System;
+#nullable disable
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Pripod.Internal.Utf8Json.Internal;

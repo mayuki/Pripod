@@ -1,4 +1,4 @@
-﻿using Pripod.Data;
+using Pripod.Data;
 using Pripod.KubernetesService;
 using System;
 
@@ -11,7 +11,7 @@ namespace Pripod
     {
         private static readonly object _syncObject = new object();
 
-        private static IPodInfo _current;
+        private static IPodInfo? _current;
         private static IKubernetesServiceProvider _serviceProvider = GetDefaultProvider();
 
         /// <summary>
@@ -21,11 +21,13 @@ namespace Pripod
         {
             get
             {
-                if (_current == null)
+                if (_current is null)
                 {
                     Initialize();
                 }
+#pragma warning disable CS8603 // Possible null reference return.
                 return _current;
+#pragma warning restore CS8603 // Possible null reference return.
             }
         }
 
