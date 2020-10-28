@@ -1,4 +1,4 @@
-﻿using Pripod.Internal;
+using Pripod.Internal;
 using Pripod.Internal.Utf8Json;
 using System;
 using System.Collections.Generic;
@@ -19,13 +19,13 @@ namespace Pripod.Internal.Kubernetes
 
     internal class MetaV1Metadata
     {
-        public string Name { get; }
-        public string GenerateName { get; }
-        public string Namespace { get; }
-        public string SelfLink { get; }
-        public string Uid { get; }
-        public string ResourceVersion { get; }
-        public string CreationTimestamp { get; }
+        public string Name { get; } = default!;
+        public string GenerateName { get; } = default!;
+        public string Namespace { get; } = default!;
+        public string SelfLink { get; } = default!;
+        public string Uid { get; } = default!;
+        public string ResourceVersion { get; } = default!;
+        public string CreationTimestamp { get; } = default!;
         public IReadOnlyDictionary<string, string> Labels { get; } = JsonReaderHelper.EmptyStringDictionary;
         public IReadOnlyDictionary<string, string> Annotations { get; } = JsonReaderHelper.EmptyStringDictionary;
         public IReadOnlyList<OwnerReference> OwnerReferences { get; } = Array.Empty<OwnerReference>();
@@ -95,10 +95,10 @@ namespace Pripod.Internal.Kubernetes
     {
         public static OwnerReference Create(ref JsonReader reader) => new OwnerReference(ref reader);
 
-        public string ApiVersion { get; set; }
-        public string Kind { get; set; }
-        public string Name { get; set; }
-        public string Uid { get; set; }
+        public string ApiVersion { get; set; } = default!;
+        public string Kind { get; set; } = default!;
+        public string Name { get; set; } = default!;
+        public string Uid { get; set; } = default!;
 
         public OwnerReference(ref JsonReader reader)
         {
@@ -145,11 +145,11 @@ namespace Pripod.Internal.Kubernetes
 
     internal class Pod : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
-        public PodSpec Spec { get; }
-        public PodStatus Status { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
+        public PodSpec Spec { get; } = default!;
+        public PodStatus Status { get; } = default!;
 
         public Pod(ref JsonReader reader)
         {
@@ -200,9 +200,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class PodSpec
     {
-        public string NodeName { get; }
-        public string ServiceAccountName { get; }
-        public string ServiceAccount { get; }
+        public string NodeName { get; } = default!;
+        public string? ServiceAccountName { get; }
+        public string? ServiceAccount { get; }
 
         public PodSpec(ref JsonReader reader)
         {
@@ -246,8 +246,8 @@ namespace Pripod.Internal.Kubernetes
 
     internal class PodStatus
     {
-        public string HostIP { get; }
-        public string PodIP { get; }
+        public string? HostIP { get; }
+        public string? PodIP { get; }
 
         public PodStatus(ref JsonReader reader)
         {
@@ -288,9 +288,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class ReplicaSet : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
 
         public ReplicaSet(ref JsonReader reader)
         {
@@ -335,9 +335,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class Deployment : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
 
         public Deployment(ref JsonReader reader)
         {
@@ -382,9 +382,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class DaemonSet : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
 
         public DaemonSet(ref JsonReader reader)
         {
@@ -428,9 +428,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class StatefulSet : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
 
         public StatefulSet(ref JsonReader reader)
         {
@@ -474,9 +474,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class Job : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
 
         public Job(ref JsonReader reader)
         {
@@ -520,9 +520,9 @@ namespace Pripod.Internal.Kubernetes
 
     internal class CronJob : IMetaV1Object, ITypeMeta
     {
-        public string Kind { get; }
-        public string ApiVersion { get; }
-        public MetaV1Metadata Metadata { get; }
+        public string Kind { get; } = default!;
+        public string ApiVersion { get; } = default!;
+        public MetaV1Metadata Metadata { get; } = default!;
 
         public CronJob(ref JsonReader reader)
         {

@@ -26,7 +26,7 @@ namespace Pripod.KubernetesService
             {
                 // Endpoints:
                 // /api/v1/namespaces/<Namespace>/pods/<PodName>
-                // /apis/apps/v1/namespaces/<Namespace>/replicasets/<ReplicSetName>
+                // /apis/apps/v1/namespaces/<Namespace>/replicasets/<ReplicaSetName>
                 // /apis/apps/v1/namespaces/<Namespace>/deployments/<DeploymentName>
 
                 var podNamespace = Namespace;
@@ -76,7 +76,7 @@ namespace Pripod.KubernetesService
         private async Task ResolveOwnerReferenceAsync(HttpClient httpClient, PodInfo podInfo, OwnerReference ownerReference)
         {
             JsonReader reader;
-            IMetaV1Object obj = default;
+            IMetaV1Object? obj = default;
 
             switch (ownerReference.Kind)
             {

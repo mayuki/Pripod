@@ -1,4 +1,4 @@
-﻿using Pripod.Internal;
+using Pripod.Internal;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,27 +16,27 @@ namespace Pripod.Data
         /// <summary>
         /// Gets information about Deployment related to the Pod.
         /// </summary>
-        DeploymentInfo Deployment { get; }
+        DeploymentInfo? Deployment { get; }
         /// <summary>
         /// Gets information about ReplicaSet related to the Pod.
         /// </summary>
-        ReplicaSetInfo ReplicaSet { get; }
+        ReplicaSetInfo? ReplicaSet { get; }
         /// <summary>
         /// Gets information about DaemonSet related to the Pod.
         /// </summary>
-        DaemonSetInfo DaemonSet { get; }
+        DaemonSetInfo? DaemonSet { get; }
         /// <summary>
         /// Gets information about StatefulSet related to the Pod.
         /// </summary>
-        StatefulSetInfo StatefulSet { get; }
+        StatefulSetInfo? StatefulSet { get; }
         /// <summary>
         /// Gets information about Job related to the Pod.
         /// </summary>
-        JobInfo Job { get; }
+        JobInfo? Job { get; }
         /// <summary>
         /// Gets information about CronJob related to the Pod.
         /// </summary>
-        CronJobInfo CronJob { get; }
+        CronJobInfo? CronJob { get; }
 
         /// <summary>
         /// Gets the name of the node running the Pod.
@@ -45,11 +45,11 @@ namespace Pripod.Data
         /// <summary>
         /// Gets IP address of the node running the Pod.
         /// </summary>
-        string HostIP { get; }
+        string? HostIP { get; }
         /// <summary>
         /// Gets IP address of the Pod.
         /// </summary>
-        string PodIP { get; }
+        string? PodIP { get; }
     }
 
     [DebuggerDisplay("Pod: {Namespace}/{Name} @ {NodeName}")]
@@ -59,12 +59,12 @@ namespace Pripod.Data
 
         public bool IsRunningOnKubernetes => true;
 
-        public DeploymentInfo Deployment { get; internal set; }
-        public ReplicaSetInfo ReplicaSet { get; internal set; }
-        public DaemonSetInfo DaemonSet { get; internal set; }
-        public StatefulSetInfo StatefulSet { get; internal set; }
-        public JobInfo Job { get; internal set; }
-        public CronJobInfo CronJob { get; internal set; }
+        public DeploymentInfo? Deployment { get; internal set; }
+        public ReplicaSetInfo? ReplicaSet { get; internal set; }
+        public DaemonSetInfo? DaemonSet { get; internal set; }
+        public StatefulSetInfo? StatefulSet { get; internal set; }
+        public JobInfo? Job { get; internal set; }
+        public CronJobInfo? CronJob { get; internal set; }
 
         string ITypeMetaInfo.Kind => _object.Kind;
         string ITypeMetaInfo.ApiVersion => _object.ApiVersion;
@@ -72,8 +72,8 @@ namespace Pripod.Data
         public string Namespace => _object.Metadata.Namespace;
         public string Name => _object.Metadata.Name;
         public string NodeName => _object.Spec.NodeName;
-        public string HostIP => _object.Status.HostIP;
-        public string PodIP => _object.Status.PodIP;
+        public string? HostIP => _object.Status.HostIP;
+        public string? PodIP => _object.Status.PodIP;
         public IReadOnlyDictionary<string, string> Annotations => _object.Metadata.Annotations;
         public IReadOnlyDictionary<string, string> Labels => _object.Metadata.Labels;
 
@@ -93,15 +93,15 @@ namespace Pripod.Data
     {
         public bool IsRunningOnKubernetes => false;
 
-        public DeploymentInfo Deployment => null;
+        public DeploymentInfo? Deployment => null;
 
-        public ReplicaSetInfo ReplicaSet => null;
+        public ReplicaSetInfo? ReplicaSet => null;
 
-        public DaemonSetInfo DaemonSet => null;
+        public DaemonSetInfo? DaemonSet => null;
 
-        public StatefulSetInfo StatefulSet => null;
-        public JobInfo Job => null;
-        public CronJobInfo CronJob => null;
+        public StatefulSetInfo? StatefulSet => null;
+        public JobInfo? Job => null;
+        public CronJobInfo? CronJob => null;
 
         string ITypeMetaInfo.Kind => "Pod";
         string ITypeMetaInfo.ApiVersion => "v1";
@@ -112,9 +112,9 @@ namespace Pripod.Data
 
         public string NodeName => Environment.MachineName;
 
-        public string HostIP => null;
+        public string? HostIP => null;
 
-        public string PodIP => null;
+        public string? PodIP => null;
 
         public IReadOnlyDictionary<string, string> Annotations => JsonReaderHelper.EmptyStringDictionary;
 
