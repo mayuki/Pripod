@@ -1,6 +1,8 @@
 using Pripod.Data;
 using Pripod.KubernetesService;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Pripod
 {
@@ -43,21 +45,35 @@ namespace Pripod
         /// </summary>
         /// <param name="resolve"></param>
         /// <param name="throwOnFail"></param>
-        public static void Initialize(OwnerReferencesResolve resolve = OwnerReferencesResolve.All, bool throwOnFail = false)
+        /// <param name="forceRefresh"></param>
+        public static void Initialize(OwnerReferencesResolve resolve = OwnerReferencesResolve.All, bool throwOnFail = false, bool forceRefresh = false)
         {
-            lock (_syncObject)
+            InitializeAsync(resolve, throwOnFail, forceRefresh).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Gets Pod information explicitly and initialize it.
+        /// </summary>
+        /// <param name="resolve"></param>
+        /// <param name="throwOnFail"></param>
+        /// <param name="forceRefresh"></param>
+        public static async Task InitializeAsync(OwnerReferencesResolve resolve = OwnerReferencesResolve.All, bool throwOnFail = false, bool forceRefresh = false)
+        {
+            if (_current is not null && !forceRefresh)
             {
-                if (_current != null) return;
+                return;
+            }
 
-                if (!_serviceProvider.IsRunningOnKubernetes)
-                {
-                    _current = new PseudoPodInfo();
-                    return;
-                }
-
+            IPodInfo podInfo;
+            if (!_serviceProvider.IsRunningOnKubernetes)
+            {
+                podInfo = new PseudoPodInfo();
+            }
+            else
+            {
                 try
                 {
-                    _current = _serviceProvider.CreatePodInfoAsync(resolve).GetAwaiter().GetResult();
+                    podInfo = await _serviceProvider.CreatePodInfoAsync(resolve).ConfigureAwait(false);
                 }
                 catch (Exception)
                 {
@@ -67,12 +83,21 @@ namespace Pripod
                     }
                     else
                     {
-                        _current = new PseudoPodInfo();
+                        podInfo = new PseudoPodInfo();
                     }
                 }
             }
-        }
 
+            lock (_syncObject)
+            {
+                if (_current is not null && !forceRefresh)
+                {
+                    return;
+                }
+
+                _current = podInfo;
+            }
+        }
 
         private static IKubernetesServiceProvider GetDefaultProvider()
         {
